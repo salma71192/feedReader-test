@@ -31,7 +31,7 @@ $(function() {
 
         //make sure each feed has a name defined and not empty.
         it('name defined', () => {
-            allFeeds.forEach((feed) => {
+            allFeeds.forEach(feed => {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
             });
@@ -53,7 +53,7 @@ $(function() {
          // make sure the menu changes visibility when the menu icon is clicked.
         it('menu element visible when menu icon clicked', () => {
             menuIcon.click();
-            expect(body.className).not.toContain('menu-hidden');
+            expect(body.classList.contains('menu-hidden')).not.toContain('menu-hidden');
 
             menuIcon.click();
             expect(body.className).toContain('menu-hidden');            
@@ -66,15 +66,12 @@ $(function() {
         // make sure presence of a single .entry element within the .feed container after "loadFeed" is completed.
 
          beforeEach((done) => {
-            loadFeed(0, () => {
-                done();
-            });            
+            loadFeed(0, done);            
          });
 
-         it('presence ofa single .entry element within the .feed container', (done) => {
+         it('presence ofa single .entry element within the .feed container', () => {
             let entriesNum = document.querySelector('.feed').getElementsByClassName('entry').length;
             expect(entriesNum).not.toEqual(0);
-            done();
          });
     
     });
