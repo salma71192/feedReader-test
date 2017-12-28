@@ -53,10 +53,10 @@ $(function() {
          // make sure the menu changes visibility when the menu icon is clicked.
         it('menu element visible when menu icon clicked', () => {
             menuIcon.click();
-            expect(body.classList.contains('menu-hidden')).not.toContain('menu-hidden');
+            expect(body.classList.contains('menu-hidden')).toBe(false);
 
             menuIcon.click();
-            expect(body.className).toContain('menu-hidden');            
+            expect(body.classList.contains('menu-hidden')).toBe(true);            
         });
     });
 
